@@ -14,6 +14,12 @@
 		8FF666361C7CA41C0098F01E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FF666341C7CA41C0098F01E /* LaunchScreen.storyboard */; };
 		8FF666411C7CA41D0098F01E /* MNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF666401C7CA41D0098F01E /* MNewsTests.swift */; };
 		8FF6664C1C7CA41D0098F01E /* MNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6664B1C7CA41D0098F01E /* MNewsUITests.swift */; };
+		8FF6665B1C7CA65A0098F01E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF666591C7CA65A0098F01E /* SwiftyJSON.framework */; };
+		8FF6665C1C7CA65A0098F01E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF6665A1C7CA65A0098F01E /* Alamofire.framework */; };
+		8FF6665E1C7CA78E0098F01E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF666591C7CA65A0098F01E /* SwiftyJSON.framework */; };
+		8FF6665F1C7CA78E0098F01E /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF666591C7CA65A0098F01E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8FF666601C7CA78E0098F01E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF6665A1C7CA65A0098F01E /* Alamofire.framework */; };
+		8FF666611C7CA78E0098F01E /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF6665A1C7CA65A0098F01E /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +39,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8FF666621C7CA78F0098F01E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8FF6665F1C7CA78E0098F01E /* SwiftyJSON.framework in Embed Frameworks */,
+				8FF666611C7CA78E0098F01E /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8FF666281C7CA41C0098F01E /* MNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF6662B1C7CA41C0098F01E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +68,8 @@
 		8FF666471C7CA41D0098F01E /* MNewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF6664B1C7CA41D0098F01E /* MNewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNewsUITests.swift; sourceTree = "<group>"; };
 		8FF6664D1C7CA41D0098F01E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FF666591C7CA65A0098F01E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		8FF6665A1C7CA65A0098F01E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +77,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FF6665B1C7CA65A0098F01E /* SwiftyJSON.framework in Frameworks */,
+				8FF6665C1C7CA65A0098F01E /* Alamofire.framework in Frameworks */,
+				8FF6665E1C7CA78E0098F01E /* SwiftyJSON.framework in Frameworks */,
+				8FF666601C7CA78E0098F01E /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +104,8 @@
 		8FF6661F1C7CA41C0098F01E = {
 			isa = PBXGroup;
 			children = (
+				8FF666591C7CA65A0098F01E /* SwiftyJSON.framework */,
+				8FF6665A1C7CA65A0098F01E /* Alamofire.framework */,
 				8FF6662A1C7CA41C0098F01E /* MNews */,
 				8FF6663F1C7CA41D0098F01E /* MNewsTests */,
 				8FF6664A1C7CA41D0098F01E /* MNewsUITests */,
@@ -135,6 +164,8 @@
 				8FF666241C7CA41C0098F01E /* Sources */,
 				8FF666251C7CA41C0098F01E /* Frameworks */,
 				8FF666261C7CA41C0098F01E /* Resources */,
+				8FF6665D1C7CA6620098F01E /* ShellScript */,
+				8FF666621C7CA78F0098F01E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,6 +281,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8FF6665D1C7CA6620098F01E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8FF666241C7CA41C0098F01E /* Sources */ = {
@@ -397,6 +445,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.koganepj.MNews;
@@ -408,6 +460,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.koganepj.MNews;
