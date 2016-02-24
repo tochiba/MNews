@@ -1,0 +1,5 @@
+github "SVProgressHUD/SVProgressHUD"
+github "rs/SDWebImage"
+github "kitasuke/PagingMenuController"
+github "Alamofire/Alamofire"
+github "SwiftyJSON/SwiftyJSON"

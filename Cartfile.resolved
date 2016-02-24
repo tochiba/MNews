@@ -1,0 +1,5 @@
+github "Alamofire/Alamofire" "3.2.0"
+github "kitasuke/PagingMenuController" "0.8.0"
+github "rs/SDWebImage" "3.7.5"
+github "SVProgressHUD/SVProgressHUD" "1.1.3"
+github "SwiftyJSON/SwiftyJSON" "2.3.3"
