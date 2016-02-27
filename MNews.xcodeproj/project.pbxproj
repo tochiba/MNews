@@ -16,6 +16,9 @@
 		8F852F891C820676005D361B /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F881C820676005D361B /* UIImage+Color.swift */; };
 		8F852F8B1C820736005D361B /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F8A1C820736005D361B /* AlertManager.swift */; };
 		8F852F8D1C8207E9005D361B /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F8C1C8207E9005D361B /* RoomManager.swift */; };
+		8F852F8F1C820ED2005D361B /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F852F8E1C820ED2005D361B /* KeychainAccess.framework */; };
+		8F852F901C820EDA005D361B /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F852F8E1C820ED2005D361B /* KeychainAccess.framework */; };
+		8F852F911C820EDA005D361B /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8F852F8E1C820ED2005D361B /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8FF6662C1C7CA41C0098F01E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6662B1C7CA41C0098F01E /* AppDelegate.swift */; };
 		8FF6662E1C7CA41C0098F01E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6662D1C7CA41C0098F01E /* ViewController.swift */; };
 		8FF666311C7CA41C0098F01E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FF6662F1C7CA41C0098F01E /* Main.storyboard */; };
@@ -64,6 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8F852F911C820EDA005D361B /* KeychainAccess.framework in Embed Frameworks */,
 				8FF6665F1C7CA78E0098F01E /* SwiftyJSON.framework in Embed Frameworks */,
 				8FF6666E1C7DFD8E0098F01E /* WebImage.framework in Embed Frameworks */,
 				8FF666661C7DF6B30098F01E /* PagingMenuController.framework in Embed Frameworks */,
@@ -85,6 +89,7 @@
 		8F852F881C820676005D361B /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Color.swift"; path = "Extensions/UIImage+Color.swift"; sourceTree = "<group>"; };
 		8F852F8A1C820736005D361B /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertManager.swift; path = Managers/AlertManager.swift; sourceTree = "<group>"; };
 		8F852F8C1C8207E9005D361B /* RoomManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomManager.swift; path = Managers/RoomManager.swift; sourceTree = "<group>"; };
+		8F852F8E1C820ED2005D361B /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		8FF666281C7CA41C0098F01E /* MNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF6662B1C7CA41C0098F01E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FF6662D1C7CA41C0098F01E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F852F8F1C820ED2005D361B /* KeychainAccess.framework in Frameworks */,
 				8FF666691C7DFD820098F01E /* SVProgressHUD.framework in Frameworks */,
 				8FF6666D1C7DFD8E0098F01E /* WebImage.framework in Frameworks */,
 				8FF6666A1C7DFD820098F01E /* WebImage.framework in Frameworks */,
@@ -119,6 +125,7 @@
 				8FF666651C7DF6B30098F01E /* PagingMenuController.framework in Frameworks */,
 				8FF6665B1C7CA65A0098F01E /* SwiftyJSON.framework in Frameworks */,
 				8FF6665C1C7CA65A0098F01E /* Alamofire.framework in Frameworks */,
+				8F852F901C820EDA005D361B /* KeychainAccess.framework in Frameworks */,
 				8FF6666B1C7DFD8E0098F01E /* SVProgressHUD.framework in Frameworks */,
 				8FF6665E1C7CA78E0098F01E /* SwiftyJSON.framework in Frameworks */,
 				8FF666601C7CA78E0098F01E /* Alamofire.framework in Frameworks */,
@@ -245,6 +252,7 @@
 		A37265E00B57B8CA5C8FCE27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F852F8E1C820ED2005D361B /* KeychainAccess.framework */,
 				DDAE4C85CD7964CDB8763999 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -265,6 +273,7 @@
 				8FF666621C7CA78F0098F01E /* Embed Frameworks */,
 				B7D8910A50AD85F0C7D5C9EA /* Embed Pods Frameworks */,
 				874512C0D23483819ED15EA2 /* Copy Pods Resources */,
+				8F852FA71C820F4B005D361B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -396,6 +405,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8F852FA71C820F4B005D361B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		8FF6665D1C7CA6620098F01E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
