@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		7F1791AFA1BEFDE467827376 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDAE4C85CD7964CDB8763999 /* Pods.framework */; };
+		8F852F7D1C82016D005D361B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F7C1C82016D005D361B /* MessagesViewController.swift */; };
+		8F852F801C82027E005D361B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F7F1C82027E005D361B /* UserManager.swift */; };
+		8F852F831C8204F8005D361B /* NCMBFile+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F821C8204F8005D361B /* NCMBFile+Sync.swift */; };
+		8F852F851C820530005D361B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F841C820530005D361B /* Constants.swift */; };
+		8F852F871C820641005D361B /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F861C820641005D361B /* MessageManager.swift */; };
+		8F852F891C820676005D361B /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F881C820676005D361B /* UIImage+Color.swift */; };
+		8F852F8B1C820736005D361B /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F8A1C820736005D361B /* AlertManager.swift */; };
+		8F852F8D1C8207E9005D361B /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852F8C1C8207E9005D361B /* RoomManager.swift */; };
 		8FF6662C1C7CA41C0098F01E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6662B1C7CA41C0098F01E /* AppDelegate.swift */; };
 		8FF6662E1C7CA41C0098F01E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6662D1C7CA41C0098F01E /* ViewController.swift */; };
 		8FF666311C7CA41C0098F01E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FF6662F1C7CA41C0098F01E /* Main.storyboard */; };
@@ -69,6 +77,14 @@
 
 /* Begin PBXFileReference section */
 		6BC4E274B30716698FC56E44 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8F852F7C1C82016D005D361B /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesViewController.swift; path = ViewControllers/MessagesViewController.swift; sourceTree = "<group>"; };
+		8F852F7F1C82027E005D361B /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Managers/UserManager.swift; sourceTree = "<group>"; };
+		8F852F821C8204F8005D361B /* NCMBFile+Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NCMBFile+Sync.swift"; path = "Extensions/NCMBFile+Sync.swift"; sourceTree = "<group>"; };
+		8F852F841C820530005D361B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8F852F861C820641005D361B /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageManager.swift; path = Managers/MessageManager.swift; sourceTree = "<group>"; };
+		8F852F881C820676005D361B /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Color.swift"; path = "Extensions/UIImage+Color.swift"; sourceTree = "<group>"; };
+		8F852F8A1C820736005D361B /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertManager.swift; path = Managers/AlertManager.swift; sourceTree = "<group>"; };
+		8F852F8C1C8207E9005D361B /* RoomManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomManager.swift; path = Managers/RoomManager.swift; sourceTree = "<group>"; };
 		8FF666281C7CA41C0098F01E /* MNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF6662B1C7CA41C0098F01E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FF6662D1C7CA41C0098F01E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +152,34 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8F852F7B1C820137005D361B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8F852F7C1C82016D005D361B /* MessagesViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8F852F7E1C82024C005D361B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8F852F7F1C82027E005D361B /* UserManager.swift */,
+				8F852F861C820641005D361B /* MessageManager.swift */,
+				8F852F8A1C820736005D361B /* AlertManager.swift */,
+				8F852F8C1C8207E9005D361B /* RoomManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		8F852F811C8204D6005D361B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8F852F821C8204F8005D361B /* NCMBFile+Sync.swift */,
+				8F852F881C820676005D361B /* UIImage+Color.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		8FF6661F1C7CA41C0098F01E = {
 			isa = PBXGroup;
 			children = (
@@ -166,12 +210,16 @@
 		8FF6662A1C7CA41C0098F01E /* MNews */ = {
 			isa = PBXGroup;
 			children = (
+				8F852F811C8204D6005D361B /* Extensions */,
+				8F852F7E1C82024C005D361B /* Managers */,
+				8F852F7B1C820137005D361B /* ViewControllers */,
 				8FF6662B1C7CA41C0098F01E /* AppDelegate.swift */,
 				8FF6662D1C7CA41C0098F01E /* ViewController.swift */,
 				8FF6662F1C7CA41C0098F01E /* Main.storyboard */,
 				8FF666321C7CA41C0098F01E /* Assets.xcassets */,
 				8FF666341C7CA41C0098F01E /* LaunchScreen.storyboard */,
 				8FF666371C7CA41C0098F01E /* Info.plist */,
+				8F852F841C820530005D361B /* Constants.swift */,
 			);
 			path = MNews;
 			sourceTree = "<group>";
@@ -400,8 +448,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F852F7D1C82016D005D361B /* MessagesViewController.swift in Sources */,
+				8F852F891C820676005D361B /* UIImage+Color.swift in Sources */,
 				8FF6662E1C7CA41C0098F01E /* ViewController.swift in Sources */,
+				8F852F831C8204F8005D361B /* NCMBFile+Sync.swift in Sources */,
+				8F852F801C82027E005D361B /* UserManager.swift in Sources */,
+				8F852F871C820641005D361B /* MessageManager.swift in Sources */,
+				8F852F8D1C8207E9005D361B /* RoomManager.swift in Sources */,
 				8FF6662C1C7CA41C0098F01E /* AppDelegate.swift in Sources */,
+				8F852F851C820530005D361B /* Constants.swift in Sources */,
+				8F852F8B1C820736005D361B /* AlertManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

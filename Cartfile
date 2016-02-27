@@ -1,3 +1,4 @@
+github "kishikawakatsumi/KeychainAccess"
 github "SVProgressHUD/SVProgressHUD"
 github "rs/SDWebImage"
 github "kitasuke/PagingMenuController"
