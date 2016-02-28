@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4cT-LO-t7B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tdy-lm-dgH">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -166,8 +165,8 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="jLQ-Rs-Nhe"/>
-                                        <exclude reference="YXM-fg-9Ks"/>
                                         <exclude reference="Cda-78-QDC"/>
+                                        <exclude reference="YXM-fg-9Ks"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -224,6 +223,53 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1982" y="1738"/>
+        </scene>
+        <!--Drawer Controller-->
+        <scene sceneID="dkG-lO-QH3">
+            <objects>
+                <viewController id="Tdy-lm-dgH" customClass="KYDrawerController" customModule="KYDrawerController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="me7-Dk-TX8"/>
+                        <viewControllerLayoutGuide type="bottom" id="EV9-Ii-zpz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SRU-ce-Ems">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="mainSegueIdentifier" value="main"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="drawerSegueIdentifier" value="drawer"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="drawerWidth">
+                            <real key="value" value="300"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="4cT-LO-t7B" kind="custom" identifier="main" customClass="KYEmbedMainControllerSegue" customModule="KYDrawerController" animates="NO" id="LwP-7q-Mjx"/>
+                        <segue destination="kdh-79-Q47" kind="custom" identifier="drawer" customClass="KYEmbedDrawerControllerSegue" customModule="KYDrawerController" animates="NO" id="mEh-xz-bEf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bzJ-4l-RaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="1528"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="NJQ-oe-OcV">
+            <objects>
+                <viewController id="kdh-79-Q47" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qmm-Gl-m7H"/>
+                        <viewControllerLayoutGuide type="bottom" id="07b-cs-KUJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iRm-c4-QnO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.83921568629999999" green="0.87739000820000002" blue="0.91164679280000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Opc-vu-LQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="2440"/>
         </scene>
         <!--Create Room View Controller-->
         <scene sceneID="zIB-AM-trA">
@@ -380,7 +426,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1198" y="1738"/>
+            <point key="canvasLocation" x="1254" y="1730"/>
         </scene>
         <!--Image Viewer View Controller-->
         <scene sceneID="7ZF-52-eBH">
@@ -452,11 +498,11 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="MO4-fE-bfg"/>
                                 <exclude reference="OVA-oG-AYH"/>
+                                <exclude reference="WLq-rH-NZI"/>
                                 <exclude reference="tJU-ed-xfX"/>
                                 <exclude reference="wSw-79-jtV"/>
-                                <exclude reference="MO4-fE-bfg"/>
-                                <exclude reference="WLq-rH-NZI"/>
                                 <exclude reference="xl1-n0-MZx"/>
                             </mask>
                         </variation>

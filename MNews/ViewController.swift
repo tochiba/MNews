@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.performSegueWithIdentifier(MainStoryboard.ViewControllers.showMessageViewControllerFromHome, sender: self)
+        //self.performSegueWithIdentifier(MainStoryboard.ViewControllers.showMessageViewControllerFromHome, sender: self)
     }
     
     override func didReceiveMemoryWarning() {
