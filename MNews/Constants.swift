@@ -14,6 +14,6 @@ let BubbleColorAlpla = UIColor(red:12/255, green: 94/255, blue: 56/255, alpha: 0
 
 struct MainStoryboard {
     struct ViewControllers {
-        static let showCustomViewControllerFromMatrix   = "MatrixToCustom"
+        static let showMessageViewControllerFromHome = "HomeToMessage"
     }
 }

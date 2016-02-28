@@ -8,11 +8,10 @@
 
 import UIKit
 import JSQMessagesViewController
-import Firebase
+import Toast_Swift
 
-class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, MessageManagerDelegate {
     
-    var ref: Firebase!
     var room: Room = Room()
     var messages: [JSQMessage]?
     var incomingBubble: JSQMessagesBubbleImage!
@@ -20,59 +19,52 @@ class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UI
     var incomingAvatar: JSQMessagesAvatarImage!
     var outgoingAvatar: JSQMessagesAvatarImage!
     
-    var dateFormatter: NSDateFormatter!
     var messageDateFormatter: NSDateFormatter!
     var icons = [String: UIImage]()
     var lastText: String = ""
     
-    func setupFirebase() {
-        
-        // firebaseのセットアップ
-        self.view.backgroundColor = UIColor.grayColor()
-        RoomManager.sharedInstance.joinRoom(room.id)
-        ref = Firebase(url: FirebaseURL + "room/" + room.id)
-        
-        // 最新25件のデータをデータベースから取得する
-        // 最新のデータ追加されるたびに最新データを取得する
-        ref.queryLimitedToLast(200).observeEventType(FEventType.ChildAdded, withBlock: { (snapshot) in
-            if  let sender = snapshot.value["from"] as? String,
-                let name = snapshot.value["name"] as? String,
-                let dateString = snapshot.value["date"] as? String,
-                let date = self.dateFormatter.dateFromString(dateString) {
-                    
-                    if let text = snapshot.value["text"] as? String {
-                        let message = JSQMessage(senderId: sender, senderDisplayName: name, date: date, text: text)
-                        self.messages?.append(message)
-                    }
-                    
-                    if let dataStr = snapshot.value["data"] as? String {                        
-                        let data = MessageManager.sharedInstance.getMessageImage(dataStr)
-                        if let image = UIImage(data: data) {
-                            let media = JSQPhotoMediaItem(image: image)
-                            media.appliesMediaViewMaskAsOutgoing = sender == self.senderId
-                            let mediaMessage = JSQMessage(senderId: sender, senderDisplayName: name, date: date, media: media)
-                            self.messages?.append(mediaMessage)
-                        }
-                    }
-                    
-            }
-            self.finishReceivingMessage()
-        })
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let r = Room()
+        r.id = "test"
+        r.title = "test"
+        self.room = r
+        
         if room.id == "" {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-        self.title = room.title
-        setupDateFormatter()
         
+        self.view.backgroundColor = UIColor.grayColor()
+        self.title = room.title
+        
+        setupDateFormatter()
+        setupMessageConfig()
+        
+        //メッセージデータの配列を初期化
+        self.messages = []
+        MessageManager.sharedInstance.setupMessages(room.id)
+        MessageManager.sharedInstance.delegate = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.senderDisplayName == "匿名" {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let nVC = storyboard.instantiateViewControllerWithIdentifier("CreateUserViewController") as? CreateUserViewController {
+                self.presentViewController(nVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    private func setupMessageConfig() {
         UserManager.sharedInstance.delegate = self
         //inputToolbar!.contentView!.leftBarButtonItem = nil
         automaticallyScrollsToMostRecentMessage = true
-        
         
         //自分のsenderId, senderDisokayNameを設定
         let user = UserManager.sharedInstance.getUser()
@@ -83,41 +75,16 @@ class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UI
         let bubbleFactory = JSQMessagesBubbleImageFactory()
         
         self.incomingBubble = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
-        
         self.outgoingBubble = bubbleFactory.outgoingMessagesBubbleImageWithColor(BubbleColorAlpla)
         
         //アバターの設定
         let size = CGSize(width: 120, height: 120)
         self.incomingAvatar = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage.colorImage(UIColor.lightGrayColor(), size: size), diameter: 120)
-        
         self.outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage.colorImage(UIColor.lightGrayColor(), size: size), diameter: 120)
         refreshUserInfo()
-        
-        //メッセージデータの配列を初期化
-        self.messages = []
-        setupFirebase()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.senderDisplayName == "匿名" {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            if let nVC = storyboard.instantiateViewControllerWithIdentifier("CreateUserViewController") as? CreateUserViewController {
-//                self.presentViewController(nVC, animated: true, completion: nil)
-//            }
-        }
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func setupDateFormatter() {
-        let date_formatter: NSDateFormatter = NSDateFormatter()
-        date_formatter.locale     = NSLocale(localeIdentifier: "ja")
-        date_formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        self.dateFormatter = date_formatter
-        
         let mdate_formatter: NSDateFormatter = NSDateFormatter()
         mdate_formatter.locale     = NSLocale(localeIdentifier: "ja")
         mdate_formatter.dateFormat = " HH:mm "
@@ -125,12 +92,23 @@ class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UI
     }
     
     private func showToast(message: String, title: String) {
-//        var style = ToastStyle()
-//        style.titleAlignment = NSTextAlignment.Left
-//        style.messageAlignment = NSTextAlignment.Left
-//        
-//        self.view.makeToast(message, duration: 2.5, position: self.view.center, title: title, image: UIImage(named: "iconColor1"), style: style) { (didTap: Bool) -> Void in
-//        }
+        var style = ToastStyle()
+        style.titleAlignment = NSTextAlignment.Left
+        style.messageAlignment = NSTextAlignment.Left
+
+        self.view.makeToast(message, duration: 2.5, position: self.view.center, title: title, image: UIImage(named: "iconColor1"), style: style) { (didTap: Bool) -> Void in
+        }
+    }
+    
+    func refreshMessages(messages: [JSQMessage]) {
+        self.messages = messages
+        self.collectionView?.reloadData()
+        self.finishReceivingMessage()
+    }
+    
+    func refreshIcons(icons: [String : UIImage]) {
+        self.icons = icons
+        self.collectionView?.reloadData()
     }
     
     func refreshUserInfo() {
@@ -160,68 +138,15 @@ class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UI
             return JSQMessagesAvatarImageFactory.avatarImageWithImage(icon, diameter: 120)
         }
         else {
-            Firebase(url: FirebaseURL + "user/" + messageSenderId + "/").queryLimitedToLast(25).observeEventType(FEventType.Value, withBlock: { (snapshot) in
-                
-                if let str = (snapshot.value as? NSDictionary)?.valueForKey(UserKey.imageKey) as? String {
-                    
-                    if let data = NSData(base64EncodedString: str, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
-                        if let image = UIImage(data: data) {
-                            self.icons[messageSenderId] = image
-                            
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.collectionView?.reloadData()
-                            })
-                        }
-                    }
-                    else {
-                        let data = UserManager.sharedInstance.getUserImage(str)
-                        if let image = UIImage(data: data) {
-                            self.icons[messageSenderId] = image
-                            
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.collectionView?.reloadData()
-                            })
-                        }
-                    }
-                    
-                }
-            })
-            
+            MessageManager.sharedInstance.setupIcons(messageSenderId)
             return self.incomingAvatar
         }
     }
     
-    private func pushNotification(text: String) {
-        //dispatch_async(dispatch_get_main_queue(), {
-        if self.lastText == text {
-            return
-        }
-        
-        let users = RoomManager.sharedInstance.getPushRoomUser(self.room.id)
-//        OneSignal.defaultClient().postNotification(["contents": ["en": text], "include_player_ids": users, "ios_badgeCount": 1, "ios_badgeType": "Increase"], onSuccess: {(dic) in
-//            
-//            }, onFailure: {(error) in
-//                
-//        })
-        //})
-    }
-    
     //Sendボタンが押された時に呼ばれる
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        //super.didPressSendButton(button, withMessageText: text, senderId: senderId, senderDisplayName: senderDisplayName, date: date)
-        //メッセジの送信処理を完了する(画面上にメッセージが表示される)
         self.finishReceivingMessageAnimated(true)
-        
-        //firebaseにデータを送信、保存する
-        let post1 = ["from": senderId, "name": senderDisplayName, "date": self.dateFormatter.stringFromDate(NSDate()), "text":text]
-        let post1Ref = self.ref.childByAutoId()
-        post1Ref.setValue(post1)
-        
-        RoomManager.sharedInstance.refreshRoomLastMessageDate(self.room.id)
-        
-        MessageCounter.add()
-        
-        pushNotification(senderDisplayName + "：" + text)
+        MessageManager.sendMessage(senderId, text: text, senderDisplayName: senderDisplayName, roomid: self.room.id)
         self.finishSendingMessageAnimated(true)
     }
     
@@ -244,16 +169,8 @@ class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UI
         guard let data = UIImageJPEGRepresentation(image, 0.3) else {
             return
         }
-        //メッセジの送信処理を完了する(画面上にメッセージが表示される)
         self.finishReceivingMessageAnimated(true)
-        
-        //firebaseにデータを送信、保存する
-        //let base64String = data.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
-        let imageString = MessageManager.sharedInstance.uploadMessageImage(data)
-        let post1 = ["from": senderId, "name": senderDisplayName, "date": self.dateFormatter.stringFromDate(NSDate()), "data": imageString]
-        let post1Ref = ref.childByAutoId()
-        post1Ref.setValue(post1)
-        
+        MessageManager.sendMessage(senderId, data: data, senderDisplayName: senderDisplayName, roomid: self.room.id)
         self.finishSendingMessageAnimated(true)
     }
     
@@ -312,7 +229,7 @@ class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UI
         }
         return self.incomingBubble
     }
-        
+    
     //アイテムごとにアバター画像を返す
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         let message = self.messages?[indexPath.item]
@@ -333,9 +250,9 @@ class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UI
         let message = self.messages?[indexPath.item]
         if message?.senderId == self.senderId {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            if let nVC = storyboard.instantiateViewControllerWithIdentifier("CreateUserViewController") as? CreateUserViewController {
-//                self.presentViewController(nVC, animated: true, completion: nil)
-//            }
+            if let nVC = storyboard.instantiateViewControllerWithIdentifier("CreateUserViewController") as? CreateUserViewController {
+                self.presentViewController(nVC, animated: true, completion: nil)
+            }
         }
         else {
             if let id = message?.senderId {
@@ -348,17 +265,17 @@ class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UI
         
         if let media = message?.media as? JSQPhotoMediaItem {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            if let nVC = storyboard.instantiateViewControllerWithIdentifier("ImageViewerViewController") as? ImageViewerViewController {
-//                nVC.image = media.image
-//                self.presentViewController(nVC, animated: true, completion: nil)
-//            }
+            if let nVC = storyboard.instantiateViewControllerWithIdentifier("ImageViewerViewController") as? ImageViewerViewController {
+                nVC.image = media.image
+                self.presentViewController(nVC, animated: true, completion: nil)
+            }
         }
         else {
             if message?.senderId == self.senderId {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                if let nVC = storyboard.instantiateViewControllerWithIdentifier("CreateUserViewController") as? CreateUserViewController {
-//                    self.presentViewController(nVC, animated: true, completion: nil)
-//                }
+                if let nVC = storyboard.instantiateViewControllerWithIdentifier("CreateUserViewController") as? CreateUserViewController {
+                    self.presentViewController(nVC, animated: true, completion: nil)
+                }
             }
             else {
                 if let id = message?.senderId {
@@ -373,9 +290,9 @@ class MessagesViewController: JSQMessagesViewController, UserManagerDelegate, UI
         let message = self.messages?[indexPath.item]
         if message?.senderId == self.senderId {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            if let nVC = storyboard.instantiateViewControllerWithIdentifier("CreateUserViewController") as? CreateUserViewController {
-//                self.presentViewController(nVC, animated: true, completion: nil)
-//            }
+            if let nVC = storyboard.instantiateViewControllerWithIdentifier("CreateUserViewController") as? CreateUserViewController {
+                self.presentViewController(nVC, animated: true, completion: nil)
+            }
         }
         else {
             if let id = message?.senderId {

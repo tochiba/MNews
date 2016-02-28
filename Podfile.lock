@@ -32,6 +32,7 @@ PODS:
   - NCMB (2.2.6)
   - NendSDK_iOS (3.0.3)
   - OneSignal (1.11.0)
+  - Toast-Swift (1.0.0)
 
 DEPENDENCIES:
   - Crashlytics
@@ -42,15 +43,21 @@ DEPENDENCIES:
   - NCMB (from `https://github.com/NIFTYCloud-mbaas/ncmb_ios.git`)
   - NendSDK_iOS
   - OneSignal
+  - Toast-Swift (from `https://github.com/sc0rch/Toast-Swift`)
 
 EXTERNAL SOURCES:
   NCMB:
     :git: https://github.com/NIFTYCloud-mbaas/ncmb_ios.git
+  Toast-Swift:
+    :git: https://github.com/sc0rch/Toast-Swift
 
 CHECKOUT OPTIONS:
   NCMB:
     :commit: d542bfb613dc411f1654bafcb67238dc09f91936
     :git: https://github.com/NIFTYCloud-mbaas/ncmb_ios.git
+  Toast-Swift:
+    :commit: c4d4446b590fe466820b4fb5e68175c83f0c69d3
+    :git: https://github.com/sc0rch/Toast-Swift
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
@@ -63,5 +70,6 @@ SPEC CHECKSUMS:
   NCMB: f8bfbf8dc6d945f9ba073f9f2ae81fce601a8f25
   NendSDK_iOS: c1440bb15197139473d47a1541a6f9368bc71583
   OneSignal: 85d4e842b26d1a6492efa9c3ecf3b38151339f8e
+  Toast-Swift: 709908e9f9a96dfd72438f9301ae28e3e98c16bb
 
 COCOAPODS: 0.39.0

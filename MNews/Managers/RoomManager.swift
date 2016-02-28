@@ -91,15 +91,9 @@ class RoomManager: NSObject {
                         room.imageData = _data
                     }
                     else {
-                        if let data = NSData(base64EncodedString: str, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
-                            room.imageData = data
-                            self.imageData[id] = data
-                        }
-                        else {
-                            let iData = self.getRoomImage(str)
-                            room.imageData = iData
-                            self.imageData[id] = iData
-                        }
+                        let iData = self.getRoomImage(str)
+                        room.imageData = iData
+                        self.imageData[id] = iData
                     }
                     
                     self.rooms.append(room)
@@ -168,15 +162,20 @@ class RoomManager: NSObject {
         let ref = Firebase(url: FirebaseURL + "room/")
         
         let now = self.dateFormatter.stringFromDate(NSDate())
-        let roomPath = roomID + now
+        let roomPath = roomID
         let roomImageID = uploadRoomImage(NSUUID().UUIDString, data: data)
         let userID = UserManager.sharedInstance.getUser().id
-        let post = [RoomKey.idKey: roomPath, RoomKey.titleKey: roomID, RoomKey.imageDataKey: roomImageID, RoomKey.createUserIDKey: userID, RoomKey.lastMessageDateKey: now]
+        let post = [
+            RoomKey.idKey: roomPath,
+            RoomKey.titleKey: roomID,
+            RoomKey.imageDataKey: roomImageID,
+            RoomKey.createUserIDKey: userID,
+            RoomKey.lastMessageDateKey: now]
         
         ref.childByAppendingPath(roomPath).setValue(post)
         
-        let upost = [UserKey.idKey: userID]
-        ref.childByAppendingPath(roomPath + "/" + RoomKey.joinUserKey + "/" + userID).setValue(upost)
+//        let upost = [UserKey.idKey: userID]
+//        ref.childByAppendingPath(roomPath + "/" + RoomKey.joinUserKey + "/" + userID).setValue(upost)
     }
     
     private func uploadRoomImage(roomID: String, data: NSData) -> String {
@@ -204,11 +203,10 @@ class RoomManager: NSObject {
     }
     
     func joinRoom(roomID: String) {
-        
         let userID = UserManager.sharedInstance.getUser().id
         let isPush = self.isPushThisRoom(roomID)
         let upost = [UserKey.idKey: userID, "isPush": isPush]
-        Firebase(url: FirebaseURL + "room/" + roomID + "/" + RoomKey.joinUserKey + "/" + getDeviceID()).setValue(upost)
+        Firebase(url: FirebaseURL + RoomKey.joinUserKey + "/" + roomID + "/" + getDeviceID()).setValue(upost)
     }
     
     func removeRoom(roomID: String) {
@@ -219,7 +217,7 @@ class RoomManager: NSObject {
     func setRoomNotification(roomID: String, isPush: Bool) {
         let userID = UserManager.sharedInstance.getUser().id
         let upost = [UserKey.idKey: userID, "isPush": isPush]
-        Firebase(url: FirebaseURL + "room/" + roomID + "/" + RoomKey.joinUserKey + "/" + getDeviceID()).setValue(upost)
+        Firebase(url: FirebaseURL + RoomKey.joinUserKey + "/" + roomID + "/" + getDeviceID()).setValue(upost)
     }
     
     func illegalRoom(room: Room) {

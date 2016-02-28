@@ -19,6 +19,9 @@
 		8F852F8F1C820ED2005D361B /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F852F8E1C820ED2005D361B /* KeychainAccess.framework */; };
 		8F852F901C820EDA005D361B /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F852F8E1C820ED2005D361B /* KeychainAccess.framework */; };
 		8F852F911C820EDA005D361B /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8F852F8E1C820ED2005D361B /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8F852FAA1C82F08A005D361B /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852FA91C82F08A005D361B /* CreateViewController.swift */; };
+		8F852FAC1C82F0FC005D361B /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852FAB1C82F0FC005D361B /* ImageViewerViewController.swift */; };
+		8F852FAF1C82F79B005D361B /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F852FAE1C82F79B005D361B /* Empty.m */; };
 		8FF6662C1C7CA41C0098F01E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6662B1C7CA41C0098F01E /* AppDelegate.swift */; };
 		8FF6662E1C7CA41C0098F01E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6662D1C7CA41C0098F01E /* ViewController.swift */; };
 		8FF666311C7CA41C0098F01E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FF6662F1C7CA41C0098F01E /* Main.storyboard */; };
@@ -90,6 +93,10 @@
 		8F852F8A1C820736005D361B /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertManager.swift; path = Managers/AlertManager.swift; sourceTree = "<group>"; };
 		8F852F8C1C8207E9005D361B /* RoomManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomManager.swift; path = Managers/RoomManager.swift; sourceTree = "<group>"; };
 		8F852F8E1C820ED2005D361B /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		8F852FA91C82F08A005D361B /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateViewController.swift; path = ViewControllers/CreateViewController.swift; sourceTree = "<group>"; };
+		8F852FAB1C82F0FC005D361B /* ImageViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewerViewController.swift; path = ViewControllers/ImageViewerViewController.swift; sourceTree = "<group>"; };
+		8F852FAD1C82F79A005D361B /* MNews-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MNews-Bridging-Header.h"; sourceTree = "<group>"; };
+		8F852FAE1C82F79B005D361B /* Empty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Empty.m; sourceTree = "<group>"; };
 		8FF666281C7CA41C0098F01E /* MNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF6662B1C7CA41C0098F01E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FF6662D1C7CA41C0098F01E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				8F852F7C1C82016D005D361B /* MessagesViewController.swift */,
+				8F852FA91C82F08A005D361B /* CreateViewController.swift */,
+				8F852FAB1C82F0FC005D361B /* ImageViewerViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -227,6 +236,8 @@
 				8FF666341C7CA41C0098F01E /* LaunchScreen.storyboard */,
 				8FF666371C7CA41C0098F01E /* Info.plist */,
 				8F852F841C820530005D361B /* Constants.swift */,
+				8F852FAE1C82F79B005D361B /* Empty.m */,
+				8F852FAD1C82F79A005D361B /* MNews-Bridging-Header.h */,
 			);
 			path = MNews;
 			sourceTree = "<group>";
@@ -470,11 +481,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F852FAA1C82F08A005D361B /* CreateViewController.swift in Sources */,
 				8F852F7D1C82016D005D361B /* MessagesViewController.swift in Sources */,
 				8F852F891C820676005D361B /* UIImage+Color.swift in Sources */,
 				8FF6662E1C7CA41C0098F01E /* ViewController.swift in Sources */,
 				8F852F831C8204F8005D361B /* NCMBFile+Sync.swift in Sources */,
 				8F852F801C82027E005D361B /* UserManager.swift in Sources */,
+				8F852FAF1C82F79B005D361B /* Empty.m in Sources */,
+				8F852FAC1C82F0FC005D361B /* ImageViewerViewController.swift in Sources */,
 				8F852F871C820641005D361B /* MessageManager.swift in Sources */,
 				8F852F8D1C8207E9005D361B /* RoomManager.swift in Sources */,
 				8FF6662C1C7CA41C0098F01E /* AppDelegate.swift in Sources */,
@@ -570,7 +584,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -608,7 +622,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -620,6 +634,7 @@
 			baseConfigurationReference = 6BC4E274B30716698FC56E44 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -628,6 +643,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.koganepj.MNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MNews/MNews-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -636,6 +653,7 @@
 			baseConfigurationReference = 9708C60394707F0B9FB8C08E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -644,6 +662,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.koganepj.MNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MNews/MNews-Bridging-Header.h";
 			};
 			name = Release;
 		};

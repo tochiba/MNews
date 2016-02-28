@@ -60,7 +60,7 @@ class AlertManager: NSObject {
             
         }
         let myOkAction = UIAlertAction(title: "通報", style: .Destructive) { action in
-            //RoomManager.sharedInstance.illegalUser(userID)
+            RoomManager.sharedInstance.illegalUser(userID)
         }
         myAlert.addAction(myCancelAction)
         myAlert.addAction(myOkAction)
@@ -76,7 +76,7 @@ class AlertManager: NSObject {
             
         }
         let myOkAction = UIAlertAction(title: "通報", style: .Destructive) { action in
-            //RoomManager.sharedInstance.illegalMessage(roomID, userID: userID, text: text)
+            RoomManager.sharedInstance.illegalMessage(roomID, userID: userID, text: text)
         }
         myAlert.addAction(myCancelAction)
         myAlert.addAction(myOkAction)
