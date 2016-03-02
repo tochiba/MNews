@@ -241,7 +241,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="mainSegueIdentifier" value="main"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="drawerSegueIdentifier" value="drawer"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="drawerWidth">
-                            <real key="value" value="300"/>
+                            <real key="value" value="220"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -253,10 +253,10 @@
             </objects>
             <point key="canvasLocation" x="-636" y="1528"/>
         </scene>
-        <!--View Controller-->
+        <!--Config View Controller-->
         <scene sceneID="NJQ-oe-OcV">
             <objects>
-                <viewController id="kdh-79-Q47" sceneMemberID="viewController">
+                <viewController id="kdh-79-Q47" customClass="ConfigViewController" customModule="MNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qmm-Gl-m7H"/>
                         <viewControllerLayoutGuide type="bottom" id="07b-cs-KUJ"/>
@@ -264,8 +264,44 @@
                     <view key="view" contentMode="scaleToFill" id="iRm-c4-QnO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.83921568629999999" green="0.87739000820000002" blue="0.91164679280000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lnv-Xb-dGR">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" id="Ks4-s1-boJ">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ks4-s1-boJ" id="Kvz-YP-4gq">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="kdh-79-Q47" id="iIN-FQ-cpY"/>
+                                    <outlet property="delegate" destination="kdh-79-Q47" id="Q3k-cl-3pb"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Lnv-Xb-dGR" secondAttribute="bottom" id="1zX-Fr-kd5"/>
+                            <constraint firstItem="Lnv-Xb-dGR" firstAttribute="leading" secondItem="iRm-c4-QnO" secondAttribute="leading" id="8kq-oa-ObU"/>
+                            <constraint firstItem="07b-cs-KUJ" firstAttribute="top" secondItem="Lnv-Xb-dGR" secondAttribute="bottom" id="Mj7-VX-PJq"/>
+                            <constraint firstItem="Lnv-Xb-dGR" firstAttribute="top" secondItem="iRm-c4-QnO" secondAttribute="top" id="SRw-FN-ZdD"/>
+                            <constraint firstAttribute="trailing" secondItem="Lnv-Xb-dGR" secondAttribute="trailing" id="Tno-V1-CfN"/>
+                            <constraint firstItem="Lnv-Xb-dGR" firstAttribute="top" secondItem="qmm-Gl-m7H" secondAttribute="bottom" id="Vck-4w-U9S"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Vck-4w-U9S"/>
+                                <exclude reference="Mj7-VX-PJq"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Lnv-Xb-dGR" id="ZIj-1v-PXJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Opc-vu-LQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

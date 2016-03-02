@@ -21,6 +21,7 @@
 		8F852FAA1C82F08A005D361B /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852FA91C82F08A005D361B /* CreateViewController.swift */; };
 		8F852FAC1C82F0FC005D361B /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852FAB1C82F0FC005D361B /* ImageViewerViewController.swift */; };
 		8F852FAF1C82F79B005D361B /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F852FAE1C82F79B005D361B /* Empty.m */; };
+		8F852FBD1C872F9B005D361B /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F852FBC1C872F9B005D361B /* ConfigViewController.swift */; };
 		8FF6662C1C7CA41C0098F01E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6662B1C7CA41C0098F01E /* AppDelegate.swift */; };
 		8FF6662E1C7CA41C0098F01E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6662D1C7CA41C0098F01E /* ViewController.swift */; };
 		8FF666311C7CA41C0098F01E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FF6662F1C7CA41C0098F01E /* Main.storyboard */; };
@@ -92,6 +93,7 @@
 		8F852FAD1C82F79A005D361B /* MNews-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MNews-Bridging-Header.h"; sourceTree = "<group>"; };
 		8F852FAE1C82F79B005D361B /* Empty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Empty.m; sourceTree = "<group>"; };
 		8F852FB01C830C61005D361B /* KYDrawerController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KYDrawerController.framework; path = Carthage/Build/iOS/KYDrawerController.framework; sourceTree = "<group>"; };
+		8F852FBC1C872F9B005D361B /* ConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigViewController.swift; path = ViewControllers/ConfigViewController.swift; sourceTree = "<group>"; };
 		8FF666281C7CA41C0098F01E /* MNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF6662B1C7CA41C0098F01E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FF6662D1C7CA41C0098F01E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				8F852F7C1C82016D005D361B /* MessagesViewController.swift */,
 				8F852FA91C82F08A005D361B /* CreateViewController.swift */,
 				8F852FAB1C82F0FC005D361B /* ImageViewerViewController.swift */,
+				8F852FBC1C872F9B005D361B /* ConfigViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				8F852F7D1C82016D005D361B /* MessagesViewController.swift in Sources */,
 				8F852F891C820676005D361B /* UIImage+Color.swift in Sources */,
 				8FF6662E1C7CA41C0098F01E /* ViewController.swift in Sources */,
+				8F852FBD1C872F9B005D361B /* ConfigViewController.swift in Sources */,
 				8F852F831C8204F8005D361B /* NCMBFile+Sync.swift in Sources */,
 				8F852F801C82027E005D361B /* UserManager.swift in Sources */,
 				8F852FAF1C82F79B005D361B /* Empty.m in Sources */,
